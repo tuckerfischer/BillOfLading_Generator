@@ -9,10 +9,14 @@ app.use(express.json());
 import Chance from 'chance';
 const chance = new Chance();
 
+var lastNames = ['Carriers', 'Trucking', 'Transport'];
+
 const BOL = [...Array(250).keys()].map(id => {
+    var randomWord = lastNames[Math.floor(Math.random() * lastNames.length)];
+
     return {
         id,
-        "Carrier Name": chance.name(),
+        "Carrier Name": chance.last() + ' ' + randomWord,
         "Carrier Address": chance.address(),
         "Date": chance.date(),
         "Phone": chance.phone(),
